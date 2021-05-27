@@ -51,24 +51,6 @@ services:
         - PUID=1000
         - PGID=1000
         - TZ=Europe/Paris
-    # Téléchargement des torrents 
-    rutorrent:
-        image: "linuxserver/rutorrent"
-        hostname: rutorrent
-        container_name: "rutorrent"
-        volumes:
-            - /home/docker/rutorrent/config:/config
-            - /home/arastorn/Download/torrent:/downloads
-        ports:
-            - 9281:80
-            - 5253:5000
-            - 51413:51413
-            - 6881:6881/udp
-        restart: unless-stopped
-        environment:
-        - PUID=1000
-        - PGID=1000
-        - TZ=Europe/Paris
     # Permet de récupérer les feed de torrent de YGG
     jackett:
         image: "linuxserver/jackett"
@@ -99,3 +81,21 @@ services:
         - PGID=1000
         - TZ=Europe/Paris
         - LOG_LEVEL=info
+    # Téléchargement des torrents 
+    transmission:
+        image: ghcr.io/linuxserver/transmission
+        container_name: transmission
+        volumes:
+            - /home/docker/transmission/config:/config
+            - /home/arastorn/Download/torrent:/downloads
+            - /home/arastorn/Download/torrent/watched:/watch
+        ports:
+            - 9091:9091
+            - 51413:51413
+            - 51413:51413/udp
+        restart: unless-stopped
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Europe/Paris
+            - TRANSMISSION_WEB_HOME=/combustion-release/
