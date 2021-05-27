@@ -1,0 +1,98 @@
+version: '3.8'
+services:
+    # gestion du home center multimédias film / séries / animées
+    jellyfin:
+        image: jellyfin/jellyfin:latest
+        hostname: jellyfin
+        container_name: jellyfin
+        volumes:
+            - /home/docker/jellyfin/config:/config
+            - /home/arastorn/Download/torrent:/downloads
+            - /home/arastorn/Jellyfin/Animes:/animes
+            - /home/arastorn/Jellyfin/Series:/series
+            - /home/arastorn/Jellyfin/Films:/movies
+        ports:
+            - 8096:8096
+        restart: unless-stopped 
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Europe/Paris
+    # Gestion des séries / animées
+    sonarr:
+        image: "linuxserver/sonarr"
+        hostname: sonarr
+        container_name: "sonarr"
+        volumes:
+            - /home/docker/sonarr/config:/config
+            - /home/arastorn/Download/torrent:/downloads
+            - /home/arastorn/Jellyfin/Animes:/animes
+            - /home/arastorn/Jellyfin/Series:/series
+        ports:
+            - 8989:8989
+        restart: unless-stopped
+        environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/Paris
+    # Gestion des films
+    radarr:
+        image: "linuxserver/radarr"
+        hostname: radarr
+        container_name: "radarr"
+        volumes:
+            - /home/docker/radarr/config:/config
+            - /home/arastorn/Download/torrent:/downloads
+            - /home/arastorn/Jellyfin/Films:/movies
+        ports:
+            - 7878:7878
+        restart: unless-stopped
+        environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/Paris
+    # Téléchargement des torrents 
+    rutorrent:
+        image: "linuxserver/rutorrent"
+        hostname: rutorrent
+        container_name: "rutorrent"
+        volumes:
+            - /home/docker/rutorrent/config:/config
+            - /home/arastorn/Download/torrent:/downloads
+        ports:
+            - 9281:80
+        restart: unless-stopped
+        environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/Paris
+    # Permet de récupérer les feed de torrent de YGG
+    jackett:
+        image: "linuxserver/jackett"
+        hostname: jackett
+        container_name: "jackett"
+        volumes:
+            - /home/docker/jackett/config:/config
+            - /home/arastorn/Download/torrent:/downloads
+        ports:
+            - 9117:9117
+        restart: unless-stopped
+        environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/Paris
+    # permet de contourner la non existence d'api pour YGG et récupérer les torrent
+    flaresolverr:
+        image: "ghcr.io/flaresolverr/flaresolverr:latest"
+        hostname: flaresolverr
+        container_name: "flaresolverr"
+        volumes:
+            - /home/docker/flaresolverr/config:/config
+        ports:
+            - 8191:8191
+        restart: unless-stopped
+        environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/Paris
+        - LOG_LEVEL=info
