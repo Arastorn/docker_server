@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+    # gestion du home center multimédias film / séries / animées
+    portainer:
+        image: portainer/portainer:latest
+        hostname: portainer
+        container_name: portainer
+        volumes:
+            - /home/docker/portainer/config:/config
+            - /var/run/docker.sock:/var/run/docker.sock
+        ports:
+            - 9000:9000
+        restart: unless-stopped 
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Europe/Paris
