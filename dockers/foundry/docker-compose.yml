@@ -1,4 +1,7 @@
 version: "3.8"
+secrets:
+    config_json:
+      file: secrets.json
 
 services:
   foundry:
@@ -10,9 +13,10 @@ services:
       - type: bind
         source: /home/arastorn/Foundry/foundrydata
         target: /data
-    environment:
-      - FOUNDRY_ADMIN_KEY=admin
     ports:
       - target: 30000
         published: 30000
         protocol: tcp
+    secrets:
+        - source: config_json
+          target: config.json
