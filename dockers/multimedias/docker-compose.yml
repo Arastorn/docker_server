@@ -61,6 +61,9 @@ services:
             - /home/arastorn/Download/torrent:/downloads
         ports:
             - 9281:80
+            - 5253:5000
+            - 51413:51413
+            - 6881:6881/udp
         restart: unless-stopped
         environment:
         - PUID=1000
