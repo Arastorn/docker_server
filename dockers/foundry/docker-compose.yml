@@ -5,6 +5,7 @@ services:
     hostname: foundryvtt
     volumes:
         -  /home/arastorn/Foundry/foundrydata:/data
+        - ./secrets.json:config.json
     init: true
     restart: "unless-stopped"
     environment:
@@ -13,5 +14,4 @@ services:
         - TZ=Europe/Paris
     ports:
       - 30000:30000
-    secrets:
-        - ./secrets.json:config.json
+        
