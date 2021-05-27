@@ -18,7 +18,10 @@ services:
             - PUID=1000
             - PGID=1000
             - TZ=Europe/Paris
-    # Gestion des séries / animées
+        devices:
+            # VAAPI Devices
+            - /dev/dri/renderD128:/dev/dri/renderD128
+            - /dev/dri/card0:/dev/dri/card0
     sonarr:
         image: "linuxserver/sonarr"
         hostname: sonarr
