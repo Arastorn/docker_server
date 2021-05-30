@@ -79,7 +79,7 @@ services:
             - 8191:8191
         restart: unless-stopped
         environment:
-        - CAPTCHA_SOLVER=hcaptcha-solver
+        # - CAPTCHA_SOLVER=hcaptcha-solver
         - PUID=1000
         - PGID=1000
         - TZ=Europe/Paris
