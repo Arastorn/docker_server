@@ -12,6 +12,6 @@ services:
         - PGID=1000
         - TZ=Europe/Paris
     ports:
-        - 30000:30000
+        - 127.0.0.1:30000:30000
         
     
