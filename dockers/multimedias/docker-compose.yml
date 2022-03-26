@@ -101,11 +101,11 @@ services:
             - TRANSMISSION_WEB_HOME=/combustion-release/
     # Téléchargement des torrents 
     rutorrent:
-        image: "linuxserver/rutorrent"
+        image: "crazymax/rtorrent-rutorrent:latest"
         hostname: rutorrent
         container_name: "rutorrent"
         volumes:
-            - /home/docker/rutorrent/config:/config
+            - /home/docker/rutorrent/data:/data
             - /home/arastorn/Download/torrent:/downloads
         ports:
             - 9281:80
