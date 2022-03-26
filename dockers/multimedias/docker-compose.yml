@@ -108,9 +108,10 @@ services:
             - /home/docker/rutorrent/data:/data
             - /home/arastorn/Download/torrent:/downloads
         ports:
-            - 9281:80
-            - 5253:5000
-            - 51414:51413
+            - 9281:8080
+            - 8000:8000
+            - 9000:9000
+            - 50000:50000
             - 6881:6881/udp
         restart: unless-stopped
         environment:
