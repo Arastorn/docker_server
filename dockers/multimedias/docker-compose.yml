@@ -15,12 +15,9 @@ services:
             - 8096:8096
         restart: unless-stopped 
         environment:
-            - PUID=1000
-            - PGID=1000
+            - PUID=1001
+            - PGID=1001
             - TZ=Europe/Paris
-        devices:
-            # VAAPI Devices
-            - /dev/dri/card0:/dev/dri/card0
     sonarr:
         image: "linuxserver/sonarr"
         hostname: sonarr
@@ -34,8 +31,8 @@ services:
             - 8989:8989
         restart: unless-stopped
         environment:
-        - PUID=1000
-        - PGID=1000
+        - PUID=1001
+        - PGID=1001
         - TZ=Europe/Paris
     # Gestion des films
     radarr:
@@ -50,8 +47,8 @@ services:
             - 7878:7878
         restart: unless-stopped
         environment:
-        - PUID=1000
-        - PGID=1000
+        - PUID=1001
+        - PGID=1001
         - TZ=Europe/Paris
     # Permet de récupérer les feed de torrent de YGG
     jackett:
@@ -65,8 +62,8 @@ services:
             - 9117:9117
         restart: unless-stopped
         environment:
-        - PUID=1000
-        - PGID=1000
+        - PUID=1001
+        - PGID=1001
         - TZ=Europe/Paris
     # permet de contourner la non existence d'api pour YGG et récupérer les torrent
     flaresolverr:
@@ -80,8 +77,8 @@ services:
         restart: unless-stopped
         environment:
         - CAPTCHA_SOLVER=hcaptcha-solver
-        - PUID=1000
-        - PGID=1000
+        - PUID=1001
+        - PGID=1001
         - TZ=Europe/Paris
         - LOG_LEVEL=info
     # Téléchargement des torrents 
@@ -98,8 +95,8 @@ services:
             - 51413:51413/udp
         restart: unless-stopped
         environment:
-            - PUID=1000
-            - PGID=1000
+            - PUID=1001
+            - PGID=1001
             - TZ=Europe/Paris
             - TRANSMISSION_WEB_HOME=/combustion-release/
     # Téléchargement des torrents 
@@ -117,6 +114,6 @@ services:
             - 6881:6881/udp
         restart: unless-stopped
         environment:
-        - PUID=1000
-        - PGID=1000
+        - PUID=1001
+        - PGID=1001
         - TZ=Europe/Paris
