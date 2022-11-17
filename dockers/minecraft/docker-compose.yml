@@ -1,12 +1,14 @@
 version: "3.8"
 services:
   minecraft-server:
-    image: itzg/minecraft-server:latest
+    image: itzg/minecraft-bedrock-server
     container_name: minecraft-server
     ports:
-      - 25565:25565
+      - 19132:19132
     environment:
       EULA: "TRUE"
+      GAMEMODE: survival
+      DIFFICULTY: normal
       ENABLE_RCON: "true"
       RCON_PASSWORD: password
       RCON_PORT: 28016
@@ -15,13 +17,13 @@ services:
       GUI: "FALSE"
       MODS_FILE: /extras/mods.txt
       REMOVE_OLD_MODS: "true"
-      PUID: 1001
-      PGID: 1001
+      UID: 1001
+      GID: 1001
     restart: unless-stopped
-    user: "1001:1001"
     volumes:
-      - /home/arastorn/minecraft/data:/data
-      - /home/arastorn/minecraft/mods.txt:/extras/mods.txt:ro
+      - /home/arastorn/Minecraft/data:/data
+    stdin_open: true
+    tty: true
     logging:
       driver: "json-file"
       options:
