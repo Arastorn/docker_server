@@ -7,6 +7,8 @@ services:
       - 19132:19132/udp
     environment:
       EULA: "TRUE"
+      WHITE_LIST: true
+      WHITE_LIST_USERS: "Arast0rn8322"
       GAMEMODE: survival
       DIFFICULTY: normal
       TZ: "Europe/Paris"
