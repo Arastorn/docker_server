@@ -4,7 +4,7 @@ services:
     image: itzg/minecraft-bedrock-server
     container_name: minecraft-server
     ports:
-      - 19132:19132/upd
+      - 19132:19132/udp
     environment:
       EULA: "TRUE"
       GAMEMODE: survival
