@@ -9,14 +9,7 @@ services:
       EULA: "TRUE"
       GAMEMODE: survival
       DIFFICULTY: normal
-      ENABLE_RCON: "true"
-      RCON_PASSWORD: password
-      RCON_PORT: 28016
-      SERVER_PORT: 25565
       TZ: "Europe/Paris"
-      GUI: "FALSE"
-      MODS_FILE: /extras/mods.txt
-      REMOVE_OLD_MODS: "true"
       UID: 1001
       GID: 1001
     restart: unless-stopped
@@ -24,7 +17,3 @@ services:
       - /home/arastorn/Minecraft/data:/data
     stdin_open: true
     tty: true
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "1m"
