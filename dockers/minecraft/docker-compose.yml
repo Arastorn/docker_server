@@ -8,7 +8,7 @@ services:
     environment:
       EULA: "TRUE"
       WHITE_LIST: true
-      WHITE_LIST_USERS: "Arast0rn8322,Groy9145"
+      WHITE_LIST_USERS: "Arast0rn8322,Groy9145,NyxBZH"
       GAMEMODE: survival
       DIFFICULTY: normal
       TZ: "Europe/Paris"
