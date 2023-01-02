@@ -8,8 +8,8 @@ services:
         volumes:
             - /home/docker/portainer/config:/config
             - /var/run/docker.sock:/var/run/docker.sock
-        ports:
-            - 9000:9000
+        # ports:
+        #    - 9000:9000
         restart: unless-stopped 
         environment:
             - PUID=1000
