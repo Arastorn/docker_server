@@ -30,3 +30,8 @@ services:
             - PUID=1000
             - PGID=1000
             - TZ=Europe/Paris
+        networks:
+            - bitwarden_default
+            - management_default
+            - multimedias_default
+            - foundry_default
