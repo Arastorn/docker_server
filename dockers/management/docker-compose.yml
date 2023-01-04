@@ -44,7 +44,7 @@ services:
         restart: unless-stopped
         networks:
             - default
-        command: tunnel --config /home/nonroot/.cloudflared/config.yml run eyJhIjoiNDQ4YWVjMjQzMjYzNTVhMDI1ZTgxZGI4NTc4NjAyYmQiLCJ0IjoiMDQ2Zjk5NzYtZTc2Yy00NDcwLWFiYmMtMTVkN2E0MTg0OTYzIiwicyI6IlpEZ3pNekpoWVdRdE5qZGxOeTAwWkdFeUxXRTBabVV0TWpRME4yTXdNRFkyTnpVNSJ9 #Replace UUID with your actual UUID
+        command: tunnel --config /home/nonroot/.cloudflared/config.yml run --token eyJhIjoiNDQ4YWVjMjQzMjYzNTVhMDI1ZTgxZGI4NTc4NjAyYmQiLCJ0IjoiMDQ2Zjk5NzYtZTc2Yy00NDcwLWFiYmMtMTVkN2E0MTg0OTYzIiwicyI6IlpEZ3pNekpoWVdRdE5qZGxOeTAwWkdFeUxXRTBabVV0TWpRME4yTXdNRFkyTnpVNSJ9 #Replace UUID with your actual UUID
         volumes:
             - /home/docker/cloudflared/data:/home/nonroot/.cloudflared/
 
