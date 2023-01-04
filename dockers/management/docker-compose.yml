@@ -38,13 +38,15 @@ services:
             - multimedias
             - foundry
 
-    cloudflared:
+    cloudflared-tunnel:
         image: cloudflare/cloudflared:latest
         container_name: cloudflared
         restart: unless-stopped
         networks:
             - default
-        command: tunnel --config /home/nonroot/.cloudflared/config.yml run --token eyJhIjoiNDQ4YWVjMjQzMjYzNTVhMDI1ZTgxZGI4NTc4NjAyYmQiLCJ0IjoiMDQ2Zjk5NzYtZTc2Yy00NDcwLWFiYmMtMTVkN2E0MTg0OTYzIiwicyI6IlpEZ3pNekpoWVdRdE5qZGxOeTAwWkdFeUxXRTBabVV0TWpRME4yTXdNRFkyTnpVNSJ9 #Replace UUID with your actual UUID
+        command: tunnel run
+        environment:
+            - TUNNEL_TOKEN=eyJhIjoiNDQ4YWVjMjQzMjYzNTVhMDI1ZTgxZGI4NTc4NjAyYmQiLCJ0IjoiNTc4NmY2MWQtZTAyZi00ZTY3LWFlNzktOGM1MDExMTk2MDhhIiwicyI6Ill6QXlZV1U0TmpRdFl6RmtZaTAwTW1SbUxXRTROVGt0TXpBMFpqRTNPV0U0Wm1GaiJ9
         volumes:
             - /home/docker/cloudflared/data:/home/nonroot/.cloudflared/
 
