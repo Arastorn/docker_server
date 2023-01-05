@@ -72,8 +72,7 @@ services:
             - PUID=1000
             - PGID=1000
             - TZ=Europe/Paris
-        networks: 
-            - host
+        networks:
             - default
         command: ["-i", "enp3s0"]
         # ports:
