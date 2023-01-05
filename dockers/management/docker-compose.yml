@@ -72,8 +72,7 @@ services:
             - PUID=1000
             - PGID=1000
             - TZ=Europe/Paris
-        networks:
-            - default
+        network_mode: "host"
         command: ["-i", "enp3s0"]
         # ports:
         #    - '3000:3000'
