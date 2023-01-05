@@ -67,7 +67,7 @@ services:
             - default
 
     ntopg: 
-        image: ntop/ntopng:stable
+        image: ntop/ntopng:latest
         network_mode: "host"
         command: ["-i", "eth0"]
         # ports:
