@@ -74,8 +74,8 @@ services:
             - TZ=Europe/Paris
         network_mode: "host"
         command: ["-i", "enp3s0"]
-        # ports:
-        #    - '3000:3000'
+        ports:
+            - '3000:3000'
 
 networks:
     default:
