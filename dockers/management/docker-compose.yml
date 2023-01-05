@@ -68,8 +68,12 @@ services:
 
     ntopg: 
         image: ntop/ntopng:latest
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Europe/Paris
         network_mode: "host"
-        command: ["-i", "eth0"]
+        command: ["-i", "enp3s0"]
         # ports:
         #    - '3000:3000'
 
