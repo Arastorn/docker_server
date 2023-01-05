@@ -66,6 +66,13 @@ services:
         networks:
             - default
 
+    ntopg: 
+        image: ntop/ntopng:stable
+        network_mode: "host"
+        command: ["-i", "eth0"]
+        # ports:
+        #    - '3000:3000'
+
 networks:
     default:
         name: management
