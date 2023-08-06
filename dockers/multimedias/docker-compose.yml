@@ -11,6 +11,7 @@ services:
             - /home/arastorn/Jellyfin/Animes:/animes
             - /home/arastorn/Jellyfin/Series:/series
             - /home/arastorn/Jellyfin/Films:/movies
+            - /home/arastorn/Jellyfin/Dramas:/dramas
         #ports:
         #    - 8096:8096
         restart: unless-stopped 
@@ -27,6 +28,7 @@ services:
             - /home/arastorn/Download/torrent:/downloads
             - /home/arastorn/Jellyfin/Animes:/animes
             - /home/arastorn/Jellyfin/Series:/series
+            - /home/arastorn/Jellyfin/Dramas:/dramas
         #ports:
         #    - 8989:8989
         restart: unless-stopped
