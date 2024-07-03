@@ -1,16 +1,37 @@
 version: "3.8"
+
+secrets:
+  config_json:
+    file: config.json
+
 services:
   foundry:
-    image: thomasfa18/node-foundry:latest
+    image: felddy/foundryvtt:release
     hostname: foundryvtt
     volumes:
-        -  /home/arastorn/Foundry/foundrydata:/data
-        -  /home/arastorn/Foundry/foundryvtt:/pkg
-    restart: "unless-stopped"
+      - /home/arastorn/Foundry/data:/data
     environment:
         - PUID=1000
         - PGID=1000
         - TZ=Europe/Paris
+    ports:
+      - 127.0.0.1:30000:30000
+    secrets:
+      - source: config_json
+        target: config.json
+
+#services:
+  #foundry:
+    #image: thomasfa18/node-foundry:latest
+    #hostname: foundryvtt
+    #volumes:
+    #    -  /home/arastorn/Foundry/foundrydata:/data
+    #    -  /home/arastorn/Foundry/foundryvtt:/pkg
+    #restart: "unless-stopped"
+    #environment:
+    #    - PUID=1000
+    #    - PGID=1000
+    #    - TZ=Europe/Paris
     # ports:
     #    - 127.0.0.1:30000:30000
         
